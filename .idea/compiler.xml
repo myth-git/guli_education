@@ -8,20 +8,26 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="service_edu" />
+        <module name="service_base" />
+        <module name="11" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="11" target="1.8" />
+      <module name="common" target="1.8" />
       <module name="guli_parent" target="1.8" />
       <module name="service" target="1.8" />
+      <module name="service_base" target="1.8" />
       <module name="service_edu" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="11" options="-parameters" />
+      <module name="common" options="-parameters" />
       <module name="guli_parent" options="" />
       <module name="service" options="-parameters" />
+      <module name="service_base" options="-parameters" />
       <module name="service_edu" options="-parameters" />
     </option>
   </component>
