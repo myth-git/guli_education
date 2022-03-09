@@ -22,6 +22,12 @@
             <artifactId>service_base</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!--引入返回结果集模块-->
+        <dependency>
+            <groupId>com.sise</groupId>
+            <artifactId>common_utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
         <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
