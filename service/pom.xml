@@ -23,11 +23,12 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!--引入返回结果集模块-->
-        <dependency>
-            <groupId>com.sise</groupId>
-            <artifactId>common_utils</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+        <!--因为service_base中，有该模块得依赖，可以依赖传递-->
+<!--        <dependency>-->
+<!--            <groupId>com.sise</groupId>-->
+<!--            <artifactId>common_utils</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
 
         <!--<dependency>
             <groupId>org.springframework.cloud</groupId>

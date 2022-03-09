@@ -11,5 +11,14 @@
 
     <artifactId>service_base</artifactId>
 
+    <dependencies>
+        <!--引入common_utils，目的能导入结果集得包-->
+        <dependency>
+            <groupId>com.sise</groupId>
+            <artifactId>common_utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
