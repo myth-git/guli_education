@@ -2,11 +2,13 @@ package com.sise.servicebase.exceptionhandler;
 
 
 import com.sise.commonutils.R;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @ControllerAdvice//处理异常
+@Slf4j//开启日志
 public class GlobalExceptionHandler {
 
     //指定出现什么异常执行这个方法
@@ -29,6 +31,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(GuliException.class)
     @ResponseBody //为了返回数据
     public R error(GuliException e) {
+        log.error(e.getMessage());//将信息输入到指定路径日志中
         e.printStackTrace();
         return R.error().code(e.getCode()).message(e.getMsg());
     }
