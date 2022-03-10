@@ -28,6 +28,7 @@ import java.util.List;
 @Api(description = "讲师管理")//swagger中文友好提示
 @RestController
 @RequestMapping("/eduservice/teacher")
+@CrossOrigin  //解决跨域
 public class EduTeacherController {
     //把service注入
     @Autowired
@@ -65,10 +66,10 @@ public class EduTeacherController {
         Page<EduTeacher> pageTeacher = new Page<>(current, limit);
         //模拟异常处理
         try {
-            int i = 10/0;
-        }catch(Exception e) {
+            int i = 10 / 0;
+        } catch (Exception e) {
             //执行自定义异常
-            throw new GuliException(20001,"执行了自定义异常处理....");
+            throw new GuliException(20001, "执行了自定义异常处理....");
         }
 
         //调用方法实现分页
@@ -123,6 +124,9 @@ public class EduTeacherController {
             //小于创建时间
             wrapper.le("gmt_create", end);
         }
+
+        //排序
+        wrapper.orderByDesc("gmt_create");
 
         //调用方法实现条件查询分页
         teacherService.page(pageTeacher, wrapper);
