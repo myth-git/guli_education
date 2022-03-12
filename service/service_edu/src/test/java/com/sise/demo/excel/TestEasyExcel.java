@@ -1,6 +1,7 @@
 package com.sise.demo.excel;
 
 import com.alibaba.excel.EasyExcel;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,11 @@ public class TestEasyExcel {
         }
         return list;
     }
-
+    @Test
+    public void testRead() {
+        //实现excel读操作
+        String filename = "G:\\write.xlsx";
+        EasyExcel.read(filename,DemoData.class,new ExcelListener()).sheet().doRead();
+    }
 
 }
