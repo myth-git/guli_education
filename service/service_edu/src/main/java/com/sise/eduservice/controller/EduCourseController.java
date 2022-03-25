@@ -1,10 +1,11 @@
 package com.sise.eduservice.controller;
 
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import com.sise.commonutils.R;
+import com.sise.eduservice.entity.vo.CourseInfoVo;
+import com.sise.eduservice.service.EduCourseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -19,5 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin//解决跨域问题
 public class EduCourseController {
 
+    @Autowired
+    EduCourseService courseService;
+    //添加课程基本信息的方法
+    @PostMapping("addCourseInfo")
+    public R addCourseInfo(@RequestBody CourseInfoVo courseInfoVo){
+        //返回添加之后课程id，为了后面添加大纲使用
+        courseService.saveCourseInfo(courseInfoVo);
+        return R.ok();
+    }
 }
 
