@@ -1,9 +1,14 @@
 package com.sise.eduservice.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.sise.commonutils.R;
+import com.sise.eduservice.entity.chapter.ChapterVo;
+import com.sise.eduservice.service.EduChapterService;
+import io.swagger.annotations.Authorization;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 /**
  * <p>
@@ -14,8 +19,19 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2022-03-25
  */
 @RestController
-@RequestMapping("/eduservice/edu-chapter")
+@RequestMapping("/eduservice/chapter")
+@CrossOrigin
 public class EduChapterController {
+
+    @Autowired
+    private EduChapterService chapterService;
+
+    //课程大纲列表,根据课程id进行查询
+    @GetMapping("getChapterVideo/{courseId}")
+    public R getChapterVideo(@PathVariable String courseId) {
+        List<ChapterVo> list = chapterService.getChapterVideoByCourseId(courseId);
+        return R.ok().data("allChapterVideo", list);
+    }
 
 }
 
