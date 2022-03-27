@@ -3,6 +3,7 @@ package com.sise.eduservice.service.impl;
 import com.sise.eduservice.entity.EduCourse;
 import com.sise.eduservice.entity.EduCourseDescription;
 import com.sise.eduservice.entity.vo.CourseInfoVo;
+import com.sise.eduservice.entity.vo.CoursePublishVo;
 import com.sise.eduservice.mapper.EduCourseMapper;
 import com.sise.eduservice.service.EduCourseDescriptionService;
 import com.sise.eduservice.service.EduCourseService;
@@ -80,5 +81,11 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         courseDescriptionService.updateById(description);
 
 
+    }
+    //根据课程id查询课程确认信息
+    @Override
+    public CoursePublishVo publishCourseInfo(String id) {
+        CoursePublishVo publishCourseInfo = baseMapper.getPublishCourseInfo(id);
+        return publishCourseInfo;
     }
 }

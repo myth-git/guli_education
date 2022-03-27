@@ -3,6 +3,7 @@ package com.sise.eduservice.controller;
 
 import com.sise.commonutils.R;
 import com.sise.eduservice.entity.vo.CourseInfoVo;
+import com.sise.eduservice.entity.vo.CoursePublishVo;
 import com.sise.eduservice.service.EduCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +41,13 @@ public class EduCourseController {
     public R updateCourseInfo(@RequestBody CourseInfoVo courseInfoVo){
         courseService.updateCourseInfo(courseInfoVo);
         return R.ok();
+    }
+
+    //根据课程id查询课程确认信息
+    @GetMapping("getPublishCourseInfo/{id}")
+    public R getPublishCourseInfo(@PathVariable String id){
+        CoursePublishVo coursePublishVo = courseService.publishCourseInfo(id);
+        return R.ok().data("publishCourse",coursePublishVo);
     }
 }
 
