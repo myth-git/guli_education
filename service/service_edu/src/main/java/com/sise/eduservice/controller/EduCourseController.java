@@ -2,6 +2,7 @@ package com.sise.eduservice.controller;
 
 
 import com.sise.commonutils.R;
+import com.sise.eduservice.entity.EduCourse;
 import com.sise.eduservice.entity.vo.CourseInfoVo;
 import com.sise.eduservice.entity.vo.CoursePublishVo;
 import com.sise.eduservice.service.EduCourseService;
@@ -48,6 +49,17 @@ public class EduCourseController {
     public R getPublishCourseInfo(@PathVariable String id){
         CoursePublishVo coursePublishVo = courseService.publishCourseInfo(id);
         return R.ok().data("publishCourse",coursePublishVo);
+    }
+
+    //课程最终发布
+    //修改课程的状态
+    @PostMapping("publishCourse/{id}")
+    public R publishCourse(@PathVariable String id){
+        EduCourse eduCourse = new EduCourse();
+        eduCourse.setId(id);
+        eduCourse.setStatus("Normal");
+        courseService.updateById(eduCourse);
+        return R.ok();
     }
 }
 
