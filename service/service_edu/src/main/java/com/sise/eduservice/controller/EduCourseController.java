@@ -9,6 +9,8 @@ import com.sise.eduservice.service.EduCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * <p>
  * 课程 前端控制器
@@ -24,6 +26,14 @@ public class EduCourseController {
 
     @Autowired
     EduCourseService courseService;
+
+    //课程列表基本实现
+    //TODO 完善条件查询带分页
+    @GetMapping
+    public R getCourseList(){
+        List<EduCourse> list = courseService.list(null);
+        return R.ok().data("list",list);
+    }
     //添加课程基本信息的方法
     @PostMapping("addCourseInfo")
     public R addCourseInfo(@RequestBody CourseInfoVo courseInfoVo){
@@ -59,6 +69,12 @@ public class EduCourseController {
         eduCourse.setId(id);
         eduCourse.setStatus("Normal");
         courseService.updateById(eduCourse);
+        return R.ok();
+    }
+    //删除课程
+    @DeleteMapping("{courseId}")
+    public R deleteCourse(@PathVariable String courseId){
+        courseService.removeCourse(courseId);
         return R.ok();
     }
 }
