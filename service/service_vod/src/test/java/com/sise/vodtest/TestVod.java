@@ -13,10 +13,24 @@ import com.aliyuncs.vod.model.v20170321.GetVideoPlayAuthResponse;
 import java.util.List;
 
 public class TestVod {
+    //1 根据视频iD获取视频播放凭证
+    public static void main(String[] args) throws ClientException {
 
-    public static void main(String[] args) throws Exception {
+        DefaultAcsClient client = InitObject.initVodClient("LTAI5tSAEumpRXh4NUEPLDbU", "oDG6bMThg2oy9Ibbk0kiOjPPszdYeo");
+
+        GetVideoPlayAuthRequest request = new GetVideoPlayAuthRequest();
+        GetVideoPlayAuthResponse response = new GetVideoPlayAuthResponse();
+
+        request.setVideoId("d0b6336d52ac416daf7afce7832845c7");
+
+        response = client.getAcsResponse(request);
+        System.out.println("playAuth:"+response.getPlayAuth());
+
+    }
 
     //1 根据视频iD获取视频播放地址
+    public static void getPlayUrl() throws Exception{
+        //1 根据视频iD获取视频播放地址
         //创建初始化对象
         DefaultAcsClient client = InitObject.initVodClient("LTAI5tSAEumpRXh4NUEPLDbU", "oDG6bMThg2oy9Ibbk0kiOjPPszdYeo");
 
