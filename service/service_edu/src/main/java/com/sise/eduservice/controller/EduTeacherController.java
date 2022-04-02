@@ -7,6 +7,7 @@ import com.sise.commonutils.R;
 import com.sise.eduservice.entity.EduTeacher;
 import com.sise.eduservice.entity.vo.TeacherQuery;
 import com.sise.eduservice.service.EduTeacherService;
+import com.sise.servicebase.exceptionhandler.GlobalExceptionHandler;
 import com.sise.servicebase.exceptionhandler.GuliException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
