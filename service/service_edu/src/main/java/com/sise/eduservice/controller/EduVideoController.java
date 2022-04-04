@@ -6,6 +6,7 @@ import com.sise.commonutils.R;
 import com.sise.eduservice.client.VodClient;
 import com.sise.eduservice.entity.EduVideo;
 import com.sise.eduservice.service.EduVideoService;
+import com.sise.servicebase.exceptionhandler.GuliException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,7 +46,10 @@ public class EduVideoController {
         //判断小节里面是否有视频id
         if (!StringUtils.isEmpty(videoSourceId)){
             //根据视频id，远程调用实现视频删除
-            vodClient.removeAlyVideo(videoSourceId);
+            R result = vodClient.removeAlyVideo(videoSourceId);
+            if (result.getCode() == 20001){
+                throw new GuliException(20001,"删除视频视频，熔断器。。");
+            }
         }
         //删除小节
         videoService.removeById(id);
