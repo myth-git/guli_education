@@ -70,7 +70,7 @@ public class MsmServiceImpl implements MsmService {
     }
 
     @Override
-    @Async
+    @Async//开启异步，加快获取邮箱速度
     public void sendEmail(String email, String code) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setSubject("谷粒学院项目登录验证码");

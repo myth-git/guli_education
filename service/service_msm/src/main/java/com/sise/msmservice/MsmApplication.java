@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 @ComponentScan("com.sise")
-@EnableAsync
+@EnableAsync//开启异步，加快获取邮箱速度
 public class MsmApplication {
 
     public static void main(String[] args) {
