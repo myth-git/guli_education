@@ -1,16 +1,15 @@
 package com.sise.educenter.controller;
 
 
+import com.sise.commonutils.JwtUtils;
 import com.sise.commonutils.R;
 import com.sise.educenter.entity.UcenterMember;
 import com.sise.educenter.entity.vo.RegisterVo;
 import com.sise.educenter.service.UcenterMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * <p>
@@ -42,6 +41,16 @@ public class UcenterMemberController {
     public R registerUser(@RequestBody RegisterVo registerVo){
         memberService.register(registerVo);
         return R.ok();
+    }
+
+    //根据token获取用户信息
+    @GetMapping("getMemberInfo")
+    public R getMemberInfo(HttpServletRequest request){
+        //调用jwt工具类的方法。根据request对象获取头信息，返回用户id
+        String memberId = JwtUtils.getMemberIdByJwtToken(request);
+        //查询数据库根据用户id获取用户信息
+        UcenterMember member = memberService.getById(memberId);
+        return R.ok().data("userInfo",member);
     }
 
 }
