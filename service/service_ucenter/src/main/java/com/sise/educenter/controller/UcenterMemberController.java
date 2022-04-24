@@ -3,6 +3,7 @@ package com.sise.educenter.controller;
 
 import com.sise.commonutils.R;
 import com.sise.educenter.entity.UcenterMember;
+import com.sise.educenter.entity.vo.RegisterVo;
 import com.sise.educenter.service.UcenterMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +35,13 @@ public class UcenterMemberController {
         //返回token值，使用jwt生成
         String token = memberService.login(member);
         return R.ok().data("token",token);
+    }
+
+    //手机注册
+    @PostMapping("register")
+    public R registerUser(@RequestBody RegisterVo registerVo){
+        memberService.register(registerVo);
+        return R.ok();
     }
 
 }

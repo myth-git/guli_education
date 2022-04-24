@@ -2,6 +2,7 @@ package com.sise.educenter.service;
 
 import com.sise.educenter.entity.UcenterMember;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.sise.educenter.entity.vo.RegisterVo;
 
 /**
  * <p>
@@ -14,4 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface UcenterMemberService extends IService<UcenterMember> {
     //手机登录
     String login(UcenterMember member);
+    //手机注册
+    void register(RegisterVo registerVo);
 }
