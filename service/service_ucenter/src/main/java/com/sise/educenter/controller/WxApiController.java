@@ -67,7 +67,7 @@ public class WxApiController {
             String openid = (String) mapAccessToken.get("openid");
 
             UcenterMember member = memberService.getOpenIdMember(openid);
-            if (member == null){
+            if (member == null) {
                 //3 拿着得到accsess_token 和 openid，再去请求微信提供固定的地址，获取到扫描人信息
                 //访问微信的资源服务器，获取用户信息
                 String baseUserInfoUrl = "https://api.weixin.qq.com/sns/userinfo" +
@@ -106,11 +106,13 @@ public class WxApiController {
                 member.setAvatar(headimgurl);
                 memberService.save(member);
             }
-
-            return "redirect:http://localhost:3000";
+            //使用jwt根据member对象生成token字符串
+            String jwtToken = JwtUtils.getJwtToken(member.getId(), member.getNickname());
+            //最后：返回首页面，通过路径传递token字符串
+            return "redirect:http://localhost:3000?token=" + jwtToken;
 
         } catch (Exception e) {
-            throw new GuliException(20001,"登录失败");
+            throw new GuliException(20001, "登录失败");
         }
 
     }
