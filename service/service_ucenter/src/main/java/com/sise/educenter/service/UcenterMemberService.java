@@ -17,4 +17,6 @@ public interface UcenterMemberService extends IService<UcenterMember> {
     String login(UcenterMember member);
     //手机注册
     void register(RegisterVo registerVo);
+    //判断是否有重复openid
+    UcenterMember getOpenIdMember(String openid);
 }
