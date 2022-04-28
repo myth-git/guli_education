@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sise.eduservice.entity.EduCourse;
 import com.sise.eduservice.entity.EduCourseDescription;
 import com.sise.eduservice.entity.frontvo.CourseFrontVo;
+import com.sise.eduservice.entity.frontvo.CourseWebVo;
 import com.sise.eduservice.entity.vo.CourseInfoVo;
 import com.sise.eduservice.entity.vo.CoursePublishVo;
 import com.sise.eduservice.mapper.EduCourseMapper;
@@ -168,4 +169,12 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         //map返回
         return map;
     }
+    //2 课程详情的方法
+    @Override
+    public CourseWebVo getBaseCourseInfo(String courseId) {
+        //根据课程id，编写sql语句查询课程信息
+        return baseMapper.getBaseCourseInfo(courseId);
+    }
+
+
 }

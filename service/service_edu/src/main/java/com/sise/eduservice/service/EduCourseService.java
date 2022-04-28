@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.sise.eduservice.entity.EduCourse;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.sise.eduservice.entity.frontvo.CourseFrontVo;
+import com.sise.eduservice.entity.frontvo.CourseWebVo;
 import com.sise.eduservice.entity.vo.CourseInfoVo;
 import com.sise.eduservice.entity.vo.CoursePublishVo;
 
@@ -30,4 +31,6 @@ public interface EduCourseService extends IService<EduCourse> {
     void removeCourse(String courseId);
     //1 条件查询带分页查询课程
     Map<String, Object> getCourseFrontList(Page<EduCourse> pageCourse, CourseFrontVo courseFrontVo);
+    //2 课程详情的方法
+    CourseWebVo getBaseCourseInfo(String courseId);
 }
