@@ -9,13 +9,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="common_utils" />
         <module name="service_ucenter" />
-        <module name="11" />
         <module name="service_oss" />
         <module name="service_base" />
-        <module name="service_cms" />
         <module name="service_msm" />
+        <module name="service_cms" />
+        <module name="11" />
         <module name="service_vod" />
         <module name="service_edu" />
+        <module name="service_order" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -28,6 +29,7 @@
       <module name="service_cms" target="1.8" />
       <module name="service_edu" target="1.8" />
       <module name="service_msm" target="1.8" />
+      <module name="service_order" target="1.8" />
       <module name="service_oss" target="1.8" />
       <module name="service_ucenter" target="1.8" />
       <module name="service_vod" target="1.8" />
@@ -44,6 +46,7 @@
       <module name="service_cms" options="-parameters" />
       <module name="service_edu" options="-parameters" />
       <module name="service_msm" options="-parameters" />
+      <module name="service_order" options="-parameters" />
       <module name="service_oss" options="-parameters" />
       <module name="service_ucenter" options="-parameters" />
       <module name="service_vod" options="-parameters" />
