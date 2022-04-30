@@ -19,4 +19,6 @@ public interface UcenterMemberService extends IService<UcenterMember> {
     void register(RegisterVo registerVo);
     //判断是否有重复openid
     UcenterMember getOpenIdMember(String openid);
+    //查询某一天注册人数
+    Integer countRegisterDay(String day);
 }
